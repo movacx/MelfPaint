@@ -1,0 +1,34 @@
+# Maintainer: Herlin Chavarria <253316889+movacx@users.noreply.github.com>
+# Contributor: movacx
+pkgname=melfpaint
+pkgver=@VERSION@
+pkgrel=1
+pkgdesc="Editor de imágenes"
+arch=('any')
+url="https://github.com/movacx/MelfPaint"
+license=('GPL-3.0-or-later')
+depends=('python>=3.11' 'pyside6' 'python-numpy' 'hicolor-icon-theme')
+optdepends=(
+  'python-pillow: guardar y abrir GIF, TIFF, WebP e ICO aunque Qt no tenga el códec'
+  'qt6-imageformats: códecs nativos de WebP y TIFF'
+  'qt6-translations: botones y atajos de Qt en español'
+)
+makedepends=('make')
+source=("$pkgname-$pkgver.tar.gz")
+sha256sums=('@SHA256@')
+
+build() {
+  cd "$pkgname-$pkgver"
+  python -m compileall -q app/backend app/frontend app/main.py app/version.py >/dev/null
+}
+
+check() {
+  cd "$pkgname-$pkgver"
+  make test PYTHON=python
+}
+
+package() {
+  cd "$pkgname-$pkgver"
+  make install DESTDIR="$pkgdir" PREFIX=/usr PYTHON=/usr/bin/python3
+  python -m compileall -q -d /usr/share/melfpaint "$pkgdir/usr/share/melfpaint" >/dev/null
+}

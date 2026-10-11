@@ -1,0 +1,15 @@
+Package: melfpaint
+Version: @VERSION@-1
+Architecture: all
+Maintainer: Herlin Chavarria <253316889+movacx@users.noreply.github.com>
+Installed-Size: @SIZE@
+Depends: python3 (>= 3.11), python3-pyside6.qtcore, python3-pyside6.qtgui, python3-pyside6.qtwidgets, python3-pyside6.qtsvg, python3-pyside6.qtprintsupport, python3-numpy, hicolor-icon-theme
+Recommends: python3-pil, qt6-image-formats-plugins, qt6-translations-l10n
+Section: graphics
+Priority: optional
+Homepage: https://github.com/movacx/MelfPaint
+Description: editor de imágenes de escritorio con capas, pinceles y formas
+ MelfPaint es un editor de imágenes sencillo para Linux: selección,
+ recorte, cambiar tamaño y sesgar, girar y voltear, lápiz, relleno, texto,
+ borrador, selector de color, lupa, nueve pinceles, 23 formas editables,
+ paleta de colores, capas, reglas, cuadrícula y zoom.

@@ -1,0 +1,23 @@
+[Desktop Entry]
+Type=Application
+Version=1.5
+Name=MelfPaint
+GenericName=Image Editor
+GenericName[es]=Editor de imágenes
+Comment=Draw and edit images
+Comment[es]=Dibuja y edita imágenes
+Exec=melfpaint %F
+TryExec=melfpaint
+Icon=io.github.melfpaint.MelfPaint
+Terminal=false
+StartupNotify=true
+StartupWMClass=melfpaint
+Categories=Graphics;2DGraphics;RasterGraphics;
+Keywords=paint;draw;drawing;image;editor;pintar;dibujar;dibujo;imagen;
+MimeType=application/x-melfpaint;image/png;image/jpeg;image/bmp;image/gif;image/tiff;image/webp;image/x-icon;image/vnd.microsoft.icon;
+Actions=new-window;
+
+[Desktop Action new-window]
+Name=New Image
+Name[es]=Imagen nueva
+Exec=melfpaint

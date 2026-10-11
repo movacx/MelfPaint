@@ -1,0 +1,78 @@
+# Medidas de la interfaz a escala del 100 %, con la barra de menús y la
+# cinta compactas.
+# Todas las posiciones de la cinta son relativas al borde izquierdo de cada
+# grupo y al borde superior de la cinta.
+
+TITLE_BAR_HEIGHT = 36
+TITLE_BUTTON_WIDTH = 58
+TITLE_ICON = 16
+
+MENU_BAR_HEIGHT = 44
+APP_BAR_HEIGHT = MENU_BAR_HEIGHT  # nombre conservado para integraciones
+COMMAND_BAR_HEIGHT = MENU_BAR_HEIGHT
+
+RIBBON_HEIGHT = 112
+RIBBON_GROUP_HEIGHT = RIBBON_HEIGHT
+RIBBON_LABEL_CENTER = 97
+RIBBON_LABEL_HEIGHT = 18
+RIBBON_ROW_1 = 24  # centro vertical de la primera fila de botones
+RIBBON_ROW_2 = 64  # centro vertical de la segunda fila
+RIBBON_BIG_TOP = 6  # borde superior de los botones grandes
+RIBBON_BIG_HEIGHT = 72
+RIBBON_BIG_ICON = 36  # centro del icono de los botones grandes
+RIBBON_BIG_CHEVRON = 66  # centro de la flecha de los botones grandes
+
+BUTTON = 36
+ICON = 20
+ICON_BIG = 26
+BUTTON_RADIUS = 4
+
+# Anchos de los grupos de la cinta (de izquierda a derecha).
+GROUP_CLIPBOARD = 129
+GROUP_IMAGE = 192
+GROUP_TOOLS = 170
+GROUP_BRUSHES = 83
+GROUP_SHAPES = 346
+GROUP_SIZE = 69
+GROUP_COLORS = 476
+GROUP_LAYERS = 70
+
+SHAPE_CELL_WIDTH = 27
+SHAPE_CELL_HEIGHT = 24
+SHAPE_COLUMNS = 8
+
+COLOR_ACTIVE = 30
+COLOR_SWATCH = 20
+COLOR_STEP_X = 30
+COLOR_STEP_Y = 26
+COLOR_SWATCH_ACTIVE = COLOR_ACTIVE
+
+CANVAS_MARGIN = 40
+CANVAS_MARGIN_TOP = 20
+CANVAS_HANDLE = 7
+RULER_SIZE = 20
+CHECKER_SIZE = 8
+
+TEXT_TOOLBAR_HEIGHT = 56
+TEXT_TOOLBAR_SURFACE_HEIGHT = 48
+TEXT_TOOLBAR_WIDTH = 748
+
+STROKE_RAIL_WIDTH = 96
+STROKE_RAIL_MIN_HEIGHT = 280
+STROKE_RAIL_HEIGHT = 400  # alto máximo
+
+STATUS_BAR_HEIGHT = 41
+ZOOM_SLIDER_WIDTH = 165
+LAYERS_PANEL_WIDTH = 196
+LAYER_THUMBNAIL = 72
+
+# Compatibilidad con vistas anteriores.
+SMALL_BUTTON = BUTTON
+MEDIUM_BUTTON_WIDTH = BUTTON
+LARGE_BUTTON_WIDTH = 48
+LARGE_BUTTON_HEIGHT = 80
+ICON_SMALL = ICON
+ICON_LARGE = ICON_BIG
+RIBBON_MARGIN = 0
+RIBBON_SPACING = 0
+RIBBON_GROUP_LABEL_HEIGHT = RIBBON_LABEL_HEIGHT

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mime-info xmlns="http://www.freedesktop.org/standards/shared-mime-info">
+  <mime-type type="application/x-melfpaint">
+    <comment>MelfPaint project</comment>
+    <comment xml:lang="es">Proyecto de MelfPaint</comment>
+    <sub-class-of type="application/zip"/>
+    <generic-icon name="image-x-generic"/>
+    <glob pattern="*.melfpaint"/>
+    <glob pattern="*.paint"/>
+  </mime-type>
+</mime-info>

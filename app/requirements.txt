@@ -1,0 +1,4 @@
+PySide6>=6.5,<7
+numpy>=1.24
+# Opcional: amplía los formatos (GIF, TIFF, WebP, ICO) cuando Qt no trae el códec.
+Pillow>=9

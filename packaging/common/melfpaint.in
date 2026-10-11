@@ -1,0 +1,3 @@
+#!/bin/sh
+# Lanzador de MelfPaint instalado por el paquete del sistema.
+exec @PYTHON@ @APPDIR@/main.py "$@"

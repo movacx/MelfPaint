@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component type="desktop-application">
+  <id>io.github.melfpaint.MelfPaint</id>
+  <metadata_license>CC0-1.0</metadata_license>
+  <project_license>GPL-3.0-or-later</project_license>
+  <name>MelfPaint</name>
+  <summary>Draw and edit images</summary>
+  <summary xml:lang="es">Dibuja y edita imágenes</summary>
+  <description>
+    <p>
+      MelfPaint is a simple raster image editor for Linux: selection, crop,
+      resize and skew, rotate and flip, pencil, fill, text, eraser, color
+      picker, magnifier, nine brushes, 23 editable shapes, color palette,
+      layers, rulers, gridlines and zoom.
+    </p>
+    <p xml:lang="es">
+      MelfPaint es un editor de imágenes sencillo para Linux: selección,
+      recorte, lápiz, relleno, texto, pinceles, formas, capas y zoom.
+    </p>
+  </description>
+  <developer id="io.github.movacx">
+    <name>Herlin Chavarria</name>
+  </developer>
+  <url type="homepage">https://github.com/movacx/MelfPaint</url>
+  <url type="bugtracker">https://github.com/movacx/MelfPaint/issues</url>
+  <launchable type="desktop-id">io.github.melfpaint.MelfPaint.desktop</launchable>
+  <provides>
+    <binary>melfpaint</binary>
+    <mediatype>application/x-melfpaint</mediatype>
+  </provides>
+  <categories>
+    <category>Graphics</category>
+    <category>RasterGraphics</category>
+  </categories>
+  <content_rating type="oars-1.1"/>
+  <releases>
+    <release version="1.0.0" date="2026-10-01" type="development">
+      <description>
+        <p>Open beta: ribbon toolbar, color picker with RGB/HSV/hex, movable and resizable text box, per-tool sizes, selection context menu, full screen view and Linux packages.</p>
+      </description>
+    </release>
+  </releases>
+</component>

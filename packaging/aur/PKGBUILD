@@ -1,7 +1,7 @@
 # Maintainer: Herlin Chavarria <253316889+movacx@users.noreply.github.com>
 # Contributor: movacx
 pkgname=melfpaint
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="Editor de imágenes de escritorio con capas, pinceles y formas"
 arch=('any')

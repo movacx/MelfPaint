@@ -40,6 +40,11 @@
   </categories>
   <content_rating type="oars-1.1"/>
   <releases>
+    <release version="1.0.1" date="2026-10-18" type="stable">
+      <description>
+        <p>Images that are pasted or opened stay on their own layer, so the eraser only removes your drawing. Flatpak packaging and a new application ID.</p>
+      </description>
+    </release>
     <release version="1.0.0" date="2026-10-01" type="stable">
       <description>
         <p>Open beta: ribbon toolbar, color picker with RGB/HSV/hex, movable and resizable text box, per-tool sizes, selection context menu, full screen view and Linux packages.</p>

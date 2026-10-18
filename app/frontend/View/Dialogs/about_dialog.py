@@ -19,7 +19,7 @@ class AboutDialog(QDialog):
     def __init__(
         self,
         parent: QWidget | None = None,
-        version: str = "1.0.0",
+        version: str = "1.0.1",
     ) -> None:
         super().__init__(parent)
         self.setWindowTitle(f"Acerca de {APP_NAME}")
@@ -83,5 +83,5 @@ class AboutDialog(QDialog):
         principal.addWidget(botones)
 
 
-def show_about(parent: QWidget | None = None, version: str = "1.0.0") -> int:
+def show_about(parent: QWidget | None = None, version: str = "1.0.1") -> int:
     return AboutDialog(parent, version).exec()

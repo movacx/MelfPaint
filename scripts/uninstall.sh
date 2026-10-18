@@ -66,10 +66,10 @@ normalizar_base() {
 PREFIX="$(normalizar_base "$PREFIX")"
 APP_DIR="$PREFIX/share/melfpaint"
 BIN_FILE="$PREFIX/bin/melfpaint"
-DESKTOP_FILE="$PREFIX/share/applications/io.github.melfpaint.MelfPaint.desktop"
-ICON_FILE="$PREFIX/share/icons/hicolor/scalable/apps/io.github.melfpaint.MelfPaint.svg"
+DESKTOP_FILE="$PREFIX/share/applications/io.github.movacx.MelfPaint.desktop"
+ICON_FILE="$PREFIX/share/icons/hicolor/scalable/apps/io.github.movacx.MelfPaint.svg"
 DOC_DIR="$PREFIX/share/doc/melfpaint"
-MIME_FILE="$PREFIX/share/mime/packages/io.github.melfpaint.MelfPaint.xml"
+MIME_FILE="$PREFIX/share/mime/packages/io.github.movacx.MelfPaint.xml"
 MARKER="$APP_DIR/.melfpaint-install"
 
 validar_padre() {

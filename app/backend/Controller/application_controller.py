@@ -110,6 +110,9 @@ class ApplicationController(QObject):
         self.view = self.window
         self._applying_settings = False
         self._tool_size_prefs: dict[str, float] = {}
+        self.separate_drawing = True
+        self._image_layer_ids: set[Any] = set()
+        self.tool_controller.before_paint = self._before_paint
         self._size_save_timer = QTimer(self)
         self._size_save_timer.setSingleShot(True)
         self._size_save_timer.setInterval(400)
@@ -781,6 +784,9 @@ class ApplicationController(QObject):
         try:
             document = self.document_controller.open_path(target)
             self._replace_document(document, clear_history=False)
+            if self.document.project_path is None and len(self.document.layers) == 1:
+                # Una imagen abierta es la base: dibujar encima abre su propia capa.
+                self._image_layer_ids.add(self.document.layers[0].id)
             self._discard_current_recovery()
             self._add_recent(target)
             self._status(f"Abierto: {target.name}")
@@ -1174,6 +1180,8 @@ class ApplicationController(QObject):
         if floating is None or floating.isNull():
             self._status("El Portapapeles no contiene una imagen")
             return False
+        if self.separate_drawing:
+            self._image_layer_ids.add(self.layer_controller.add_layer("Imagen").id)
         position = self._paste_position()
         if floating.width() > self.document.width or floating.height() > self.document.height:
             ask = getattr(self.window, "preguntar_ampliar_lienzo", None)
@@ -1188,6 +1196,27 @@ class ApplicationController(QObject):
         result = self.selection_controller.paste(floating, position)
         self.refresh()
         return bool(result)
+
+    def _before_paint(self) -> None:
+        """Con la separación activa, dibujar sobre una imagen pegada abre una capa «Dibujo».
+
+        El borrador y el relleno siguen actuando sobre la capa activa, de modo
+        que borrar el dibujo nunca toca la imagen de debajo.
+        """
+
+        if not self.separate_drawing or self.tool_controller.active_tool_id in ("eraser", "fill", "bucket"):
+            return
+        layer = self.document.active_layer
+        if layer is None or getattr(layer, "id", None) not in self._image_layer_ids:
+            return
+        self._image_layer_ids.discard(layer.id)
+        self.layer_controller.add_layer("Dibujo")
+
+    def set_separate_drawing(self, enabled: bool) -> None:
+        self.separate_drawing = bool(enabled)
+        self._set_action_checked("separate_drawing", self.separate_drawing)
+        if not self._applying_settings:
+            self._save_setting("dibujo_en_capa_aparte", self.separate_drawing)
 
     def paste_from_file(self) -> bool:
         target = self._choose_open_path("Pegar desde", include_projects=False)
@@ -1679,6 +1708,7 @@ class ApplicationController(QObject):
                 list(self.settings_service.obtener("colores_personalizados", [])),
             )
             self._load_tool_size_prefs()
+            self.set_separate_drawing(bool(self.settings_service.obtener("dibujo_en_capa_aparte", True)))
             self._call_optional(self.window, "set_save_formats", writable_formats())
             self._call_optional(self.window, "restaurar_estado_ventana", dict(self.settings_service.obtener("ventana", {})))
             self.set_zoom(int(self.settings_service.obtener("zoom", 100)))
@@ -1882,6 +1912,8 @@ class ApplicationController(QObject):
             return self.set_grid_visible(not bool(self.settings_service.obtener("mostrar_cuadricula", False)))
         if action == "toggle_rulers":
             return self.set_rulers_visible(not bool(self.settings_service.obtener("mostrar_regla", False)))
+        if action == "separate_drawing":
+            return self.set_separate_drawing(not self.separate_drawing)
         if action == "toggle_layers":
             return self.set_layers_visible(not bool(self.settings_service.obtener("mostrar_panel_capas", False)))
         if action == "toggle_statusbar":

@@ -43,10 +43,10 @@ rm -rf %{buildroot}%{_datadir}/licenses %{buildroot}%{_datadir}/doc/melfpaint
 %doc README.md
 %{_bindir}/melfpaint
 %{_datadir}/melfpaint/
-%{_datadir}/applications/io.github.melfpaint.MelfPaint.desktop
-%{_datadir}/metainfo/io.github.melfpaint.MelfPaint.metainfo.xml
-%{_datadir}/mime/packages/io.github.melfpaint.MelfPaint.xml
-%{_datadir}/icons/hicolor/scalable/apps/io.github.melfpaint.MelfPaint.svg
+%{_datadir}/applications/io.github.movacx.MelfPaint.desktop
+%{_datadir}/metainfo/io.github.movacx.MelfPaint.metainfo.xml
+%{_datadir}/mime/packages/io.github.movacx.MelfPaint.xml
+%{_datadir}/icons/hicolor/scalable/apps/io.github.movacx.MelfPaint.svg
 
 %changelog
 * Thu Oct 01 2026 Herlin Chavarria <253316889+movacx@users.noreply.github.com> - @VERSION@-1

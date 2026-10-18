@@ -17,6 +17,7 @@ class SettingsService:
         "mostrar_regla": False,
         "mostrar_cuadricula": False,
         "mostrar_barra_estado": True,
+        "dibujo_en_capa_aparte": True,
         "mostrar_panel_capas": False,
         "zoom": 100,
         "archivos_recientes": [],

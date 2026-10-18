@@ -123,6 +123,7 @@ class MainWindow(QMainWindow):
             ("toggle_grid", "Líneas de cuadrícula", QKeySequence("Ctrl+G"), None),
             ("toggle_statusbar", "Barra de estado", None, None),
             ("toggle_layers", "Capas", QKeySequence("F7"), "layers"),
+            ("separate_drawing", "Dibujar sobre imágenes en capa aparte", None, None),
             ("toggle_ribbon", "Ocultar la cinta", QKeySequence("Ctrl+F1"), None),
             ("toggle_theme", "Tema oscuro", None, None),
             ("fullscreen", "Pantalla completa", QKeySequence("F11"), None),
@@ -161,6 +162,7 @@ class MainWindow(QMainWindow):
             "toggle_grid",
             "toggle_rulers",
             "toggle_layers",
+            "separate_drawing",
             "toggle_statusbar",
             "toggle_ribbon",
             "toggle_theme",
@@ -274,7 +276,7 @@ class MainWindow(QMainWindow):
         mostrar = ver.addMenu("Mostrar")
         self._agregar_acciones(mostrar, "toggle_rulers", "toggle_grid", "toggle_statusbar")
         ver.addSeparator()
-        self._agregar_acciones(ver, "toggle_layers", "toggle_ribbon", "fullscreen")
+        self._agregar_acciones(ver, "toggle_layers", "separate_drawing", "toggle_ribbon", "fullscreen")
         ver.addSeparator()
         self._agregar_acciones(ver, "toggle_theme", "settings", "shortcuts")
 

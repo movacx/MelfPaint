@@ -7,7 +7,7 @@
 PREFIX ?= /usr
 DESTDIR ?=
 PYTHON ?= /usr/bin/python3
-APP_ID := io.github.melfpaint.MelfPaint
+APP_ID := io.github.movacx.MelfPaint
 VERSION := $(shell sed -n 's/^__version__ = "\(.*\)"/\1/p' app/version.py)
 
 BINDIR := $(PREFIX)/bin

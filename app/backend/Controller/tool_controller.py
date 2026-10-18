@@ -41,6 +41,9 @@ class ToolController(QObject):
     aviso = Signal(str)
 
     # Herramientas que modifican píxeles de la capa activa.
+    # Gancho opcional que se ejecuta antes de empezar un trazo (lo fija la aplicación).
+    before_paint: Callable[[], None] | None = None
+
     PAINTING_TOOLS = {"pencil", "brush", "eraser", "fill", "bucket", "text", "text_box"}
 
     def __init__(
@@ -245,6 +248,8 @@ class ToolController(QObject):
             self._bloqueado = True
             self.aviso.emit("La capa seleccionada está bloqueada. Desbloquéela para dibujar en ella.")
             return
+        if self._paints() and self.before_paint is not None and not self.has_pending_shape():
+            self.before_paint()
         self.active_button = normalizar_boton(button)
         self.active_tool.pointer_down(self.document, _point(point), self.active_button, self.settings)
         pop_pending = getattr(self.active_tool, "pop_pending_command", None)

@@ -160,11 +160,46 @@ class LayersAndStrokesTests(unittest.TestCase):
         self.tc.pointer_move(destino)
         self.tc.pointer_up(destino)
         self.c.execute_action("deselect")
-        self.assertEqual(pixel(doc, 40, 40), QColor("red"))
+        self.assertEqual(pixel(doc, 40, 40, 0), QColor("red"))
         self.assertEqual(pixel(doc, 40 + 150, 40 + 90), QColor("red"))
         self.c.execute_action("undo")
         self.assertEqual(pixel(doc, 40 + 150, 40 + 90).alpha(), 0)
-        self.assertEqual(pixel(doc, 40, 40), QColor("red"))
+        self.assertEqual(pixel(doc, 40, 40, 0), QColor("red"))
+
+    def test_drawing_over_an_opened_image_goes_to_its_own_layer(self) -> None:
+        doc = self.c.document
+        self.c._image_layer_ids.add(doc.layers[0].id)
+        doc.layers[0].image.fill(QColor("blue"))
+        self.c.select_tool("pencil")
+        self.tc.pointer_down(QPointF(10, 10))
+        self.tc.pointer_move(QPointF(40, 10))
+        self.tc.pointer_up(QPointF(40, 10))
+        self.assertEqual(len(doc.layers), 2)
+        self.c.select_tool("eraser")
+        self.tc.pointer_down(QPointF(5, 10))
+        self.tc.pointer_move(QPointF(45, 10))
+        self.tc.pointer_up(QPointF(45, 10))
+        self.assertEqual(doc.layers[0].image.pixelColor(20, 10), QColor("blue"))
+
+    def test_eraser_only_removes_the_drawing_over_a_pasted_image(self) -> None:
+        doc = self.c.document
+        imagen = QImage(60, 60, QImage.Format.Format_ARGB32_Premultiplied)
+        imagen.fill(QColor("blue"))
+        self.assertTrue(self.c.paste_image(imagen))
+        self.c.execute_action("deselect")
+        self.assertEqual(len(doc.layers), 2)
+        self.c.select_tool("pencil")
+        self.tc.pointer_down(QPointF(10, 10))
+        self.tc.pointer_move(QPointF(40, 10))
+        self.tc.pointer_up(QPointF(40, 10))
+        self.assertEqual([capa.name for capa in doc.layers], ["Capa 1", "Imagen", "Dibujo"])
+        self.c.select_tool("eraser")
+        self.tc.pointer_down(QPointF(5, 10))
+        self.tc.pointer_move(QPointF(45, 10))
+        self.tc.pointer_up(QPointF(45, 10))
+        imagen_capa = doc.layers[1].image
+        self.assertEqual(imagen_capa.pixelColor(20, 10), QColor("blue"))
+        self.assertEqual(doc.layers[2].image.pixelColor(20, 10).alpha(), 0)
 
     def test_full_layer_commands_are_compacted_to_changed_area(self) -> None:
         doc = self.c.document

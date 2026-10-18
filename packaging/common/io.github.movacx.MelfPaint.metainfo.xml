@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <component type="desktop-application">
-  <id>io.github.melfpaint.MelfPaint</id>
+  <id>io.github.movacx.MelfPaint</id>
   <metadata_license>CC0-1.0</metadata_license>
   <project_license>GPL-3.0-or-later</project_license>
   <name>MelfPaint</name>
@@ -23,7 +23,13 @@
   </developer>
   <url type="homepage">https://github.com/movacx/MelfPaint</url>
   <url type="bugtracker">https://github.com/movacx/MelfPaint/issues</url>
-  <launchable type="desktop-id">io.github.melfpaint.MelfPaint.desktop</launchable>
+  <screenshots>
+    <screenshot type="default">
+      <image>https://raw.githubusercontent.com/movacx/MelfPaint/main/docs/screenshots/main-window.png</image>
+      <caption>MelfPaint main window</caption>
+    </screenshot>
+  </screenshots>
+  <launchable type="desktop-id">io.github.movacx.MelfPaint.desktop</launchable>
   <provides>
     <binary>melfpaint</binary>
     <mediatype>application/x-melfpaint</mediatype>
@@ -34,7 +40,7 @@
   </categories>
   <content_rating type="oars-1.1"/>
   <releases>
-    <release version="1.0.0" date="2026-10-01" type="development">
+    <release version="1.0.0" date="2026-10-01" type="stable">
       <description>
         <p>Open beta: ribbon toolbar, color picker with RGB/HSV/hex, movable and resizable text box, per-tool sizes, selection context menu, full screen view and Linux packages.</p>
       </description>

@@ -34,5 +34,5 @@ modules:
     sources:
       - type: git
         url: https://github.com/movacx/MelfPaint.git
-        tag: v1.0.0
-        commit: 24f6b69860c5dc1a803bfc24185098f5f5fe310c
+        tag: v1.0.1
+        commit: 380fb5675acaaacf567d1506a8a61bbdf57187f1
